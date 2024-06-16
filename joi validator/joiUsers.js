@@ -25,7 +25,8 @@ const UserSchema = joi.object({
   .min(6)
   .max(15),
 
-  passwordConfirm: joi.ref('password')
+  passwordConfirm: joi.ref('password'),
+  photo: joi.string()
 
 })
 

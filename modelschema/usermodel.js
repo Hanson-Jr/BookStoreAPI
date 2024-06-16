@@ -1,4 +1,5 @@
 const mongoose = require ("mongoose")
+const validator = require ("validator")
 
 const Userschema = new mongoose.Schema({
   name: {
@@ -10,8 +11,11 @@ const Userschema = new mongoose.Schema({
     type: String,
     required: [true, "please provide your email"],
     unique: true,
-    lowercase: true
+    lowercase: true,
+    validate: [ validator.isEmail, 'please provide a valid email']
   },
+
+  photo: String,
 
   password:{
     type: String,
@@ -22,3 +26,7 @@ const Userschema = new mongoose.Schema({
     select: false
   }
 })
+
+const Usermodel = mongoose.model ("Usermodel", Userschema)
+
+module.exports = Usermodel
